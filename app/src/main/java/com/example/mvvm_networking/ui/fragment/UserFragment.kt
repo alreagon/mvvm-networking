@@ -24,7 +24,6 @@ import com.example.mvvm_networking.model.UserResponse
 import com.example.mvvm_networking.ui.adapter.UserAdapter
 import com.example.mvvm_networking.ui.viewmmodel.MainViewModel
 import com.example.mvvm_networking.ui.viewmmodel.UserViewModel
-import com.example.mvvm_networking.ui.viewmmodel.UserViewModelFactory
 import com.example.mvvm_networking.utils.Status
 import com.example.mvvm_networking.utils.errorToast
 import retrofit2.create

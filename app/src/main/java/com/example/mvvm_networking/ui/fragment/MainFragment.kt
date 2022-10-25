@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mvvm_networking.R
 import com.example.mvvm_networking.databinding.FragmentMainBinding
@@ -33,6 +35,11 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         super.onViewCreated(view, savedInstanceState)
 
         mainViewModel.fakeResponse.observe(viewLifecycleOwner) { setFakeData(it) }
+
+        binding.floatingActionButton.setOnClickListener{
+            findNavController().navigate(MainFragmentDirections.actionMainFragmentToUserFragment())
+        }
+
 
     }
 
