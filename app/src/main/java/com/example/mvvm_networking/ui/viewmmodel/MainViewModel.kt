@@ -1,4 +1,4 @@
-package com.example.mvvm_networking.ui.main
+package com.example.mvvm_networking.ui.viewmmodel
 
 import android.content.ContentValues
 import android.content.ContentValues.TAG
