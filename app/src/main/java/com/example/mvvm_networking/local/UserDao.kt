@@ -8,6 +8,15 @@ import com.example.mvvm_networking.model.UserResponse
 interface UserDao {
 
 //    @Insert(onConflict = OnConflictStrategy.REPLACE)
+//    suspend fun insertUser(userResponse: UserResponse)
+//
+//    @Delete
+//    suspend fun deleteUser(userResponse: UserResponse)
+//
+//    @Query("SELECT * FROM user")
+//    fun getUser() : LiveData<List<UserResponse>>
+
+//    @Insert(onConflict = OnConflictStrategy.REPLACE)
 //    suspend fun insertUser(user: UserResponse?)
 //
 //    @Query("SELECT * FROM user")
@@ -15,17 +24,17 @@ interface UserDao {
 
 
     @Query("SELECT * FROM user")
-    fun getAllProducts(): List<UserResponse>
+    fun getAllUsers(): List<UserResponse>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertProduct(products: List<UserResponse>)
+    suspend fun insertUser(products: List<UserResponse>)
 
     @Query("DELETE FROM user")
-    suspend fun deleteAllProduct()
+    suspend fun deleteAllUsers()
 
     @Transaction
-    suspend fun deleteAndInsertData(products: List<UserResponse>) {
-        deleteAllProduct()
-        insertProduct(products)
+    suspend fun deleteAndInsertDataUser(products: List<UserResponse>) {
+        deleteAllUsers()
+        insertUser(products)
     }
 }

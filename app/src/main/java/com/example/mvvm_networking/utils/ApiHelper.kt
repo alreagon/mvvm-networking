@@ -5,8 +5,7 @@ import com.example.mvvm_networking.model.UserResponse
 
 class ApiHelper(private val fakeAPI: FakeAPI) {
 
-
-    suspend fun getProducBoundResource() : List<UserResponse> {
+    suspend fun getUserHelper() : List<UserResponse> {
         return fakeAPI.getUsersFake()
     }
 

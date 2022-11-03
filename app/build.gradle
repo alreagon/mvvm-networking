@@ -76,10 +76,22 @@ dependencies {
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
 
+
     //Room Database
     implementation "androidx.room:room-runtime:2.4.3"
     implementation "androidx.room:room-ktx:2.4.3"
     kapt "androidx.room:room-compiler:2.4.3"
+
+
+    // DI
+    implementation 'io.insert-koin:koin-core:3.2.0'
+    implementation 'io.insert-koin:koin-android:3.2.0'
+    // Koin testing tools
+    testImplementation "io.insert-koin:koin-test:3.2.0"
+    // Needed JUnit version
+    testImplementation "io.insert-koin:koin-test-junit4:3.2.0"
+
+
 
 
 

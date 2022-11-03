@@ -1,5 +1,6 @@
 package com.example.mvvm_networking.ui.viewmmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,26 +12,33 @@ import com.example.mvvm_networking.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlin.math.log
+
 
 class UserViewModel(
-private val userRepository: UserRepository,
-private val networkHelper: NetworkHelper
+    private val userRepository: UserRepository,
+    private val networkHelper: NetworkHelper
 
-) : ViewModel(){
+) : ViewModel() {
     private val _getProductOffline = MutableLiveData<Resource<List<UserResponse>>>()
     val gettProductOffline: LiveData<Resource<List<UserResponse>>>
         get() = _getProductOffline
 
 
-    fun getProductOfflineAll() {
+    fun getUserOfflineAll() {
         viewModelScope.launch {
             _getProductOffline.postValue(Resource.loading(null))
             if (networkHelper.isNetworkConnected()) {
                 try {
-                    val response = userRepository.getProductBoundResource()
+                    val response = userRepository.getUserRemote()
                     _getProductOffline.postValue(Resource.success(response))
                 } catch (e: Exception) {
-                    _getProductOffline.postValue(Resource.error("failed to get data from server",null))
+                    _getProductOffline.postValue(
+                        Resource.error(
+                            "failed to get data from server",
+                            null
+                        )
+                    )
                 }
             } else {
                 val response = userRepository.getProductOffline()
@@ -39,6 +47,24 @@ private val networkHelper: NetworkHelper
         }
     }
 }
+
+
+//class UserViewModel(
+//    private val userRepository: UserRepository
+//) : ViewModel() {
+//
+//    fun getUser(): LiveData<List<UserResponse>> {
+//        return userRepository.getUser()
+//    }
+//
+//    fun insertUser(userResponse: UserResponse) {
+//        Log.e("UserViewModel", "UserViewModel $userResponse")
+//        viewModelScope.launch {
+//            userRepository.insertUser(userResponse)
+//        }
+//    }
+//}
+
 
 //class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
 //    init {
