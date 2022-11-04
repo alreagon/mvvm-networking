@@ -25,7 +25,7 @@ val repoModule = module {
 }
 
 val UserModelModule = module {
-    viewModel { UserViewModel(get(), get()) }
+    single { UserViewModel(get(), get()) }
 }
 
 val localDbModule = module {

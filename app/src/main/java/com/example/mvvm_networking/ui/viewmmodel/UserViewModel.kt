@@ -41,8 +41,13 @@ class UserViewModel(
                     )
                 }
             } else {
-                val response = userRepository.getProductOffline()
-                _getProductOffline.postValue(Resource.success(response))
+                try {
+                    val response = userRepository.getProductOffline()
+                    _getProductOffline.postValue(Resource.success(response))
+                }catch (e:Exception){
+                    _getProductOffline.postValue(Resource.error("Fail", null))
+                }
+
             }
         }
     }

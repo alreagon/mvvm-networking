@@ -12,5 +12,5 @@ interface FakeAPI {
     fun getFakeApi(): Call<List<FakeResponse>>
 
     @GET("users")
-    fun getUsersFake(): List<UserResponse>
+    suspend fun getUsersFake(): List<UserResponse>
 }
