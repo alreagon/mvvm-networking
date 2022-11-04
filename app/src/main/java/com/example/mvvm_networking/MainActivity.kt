@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
 
-        val repository = (application)
+//        val repository = (application)
         supportActionBar?.hide() // hide the title bar
         this.window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,

@@ -17,6 +17,7 @@ import com.example.mvvm_networking.ui.adapter.UserAdapter
 import com.example.mvvm_networking.ui.viewmmodel.UserViewModel
 import com.example.mvvm_networking.utils.Status
 import com.example.mvvm_networking.utils.errorToast
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class UserFragment : Fragment(R.layout.fragment_user) {
 
@@ -34,7 +35,7 @@ class UserFragment : Fragment(R.layout.fragment_user) {
 //        UserViewModelFactory(userRepository)
 //    }
 
-    private val userViewModel: UserViewModel by viewModels()
+//    val userViewModel by viewModel<UserViewModel>()
     private lateinit var recyclerView: RecyclerView
     private var userAdapter = UserAdapter()
     private var list = ArrayList<UserResponse>()
@@ -51,7 +52,7 @@ class UserFragment : Fragment(R.layout.fragment_user) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecycler()
-        setupUser()
+//        setupUser()
 //        buttonCategoryAll()
     }
 
@@ -78,31 +79,31 @@ class UserFragment : Fragment(R.layout.fragment_user) {
 //    }
 
 
-    private fun setupUser() {
-
-        userViewModel.getUserOfflineAll()
-        userViewModel.gettProductOffline.observe(viewLifecycleOwner) {
-            when (it.status) {
-                Status.SUCCESS -> {
-                    it.data?.let { listProduct ->
-                        list.clear()
-                        userAdapter.submitData(listProduct.take(40))
-                    }
-                    binding.progressBar.visibility = View.GONE
-                }
-                Status.LOADING -> {
-                    binding.progressBar.visibility = View.VISIBLE
-                }
-                Status.ERROR -> {
-                    binding.progressBar.visibility = View.GONE
-                    Toast(requireContext()).errorToast(
-                        it.message.toString(),
-                        requireContext()
-                    )
-                }
-            }
-        }
-    }
+//    private fun setupUser() {
+//
+//        userViewModel.getUserOfflineAll()
+//        userViewModel.gettProductOffline.observe(viewLifecycleOwner) {
+//            when (it.status) {
+//                Status.SUCCESS -> {
+//                    it.data?.let { listProduct ->
+//                        list.clear()
+//                        userAdapter.submitData(listProduct.take(40))
+//                    }
+//                    binding.progressBar.visibility = View.GONE
+//                }
+//                Status.LOADING -> {
+//                    binding.progressBar.visibility = View.VISIBLE
+//                }
+//                Status.ERROR -> {
+//                    binding.progressBar.visibility = View.GONE
+//                    Toast(requireContext()).errorToast(
+//                        it.message.toString(),
+//                        requireContext()
+//                    )
+//                }
+//            }
+//        }
+//    }
 
     override fun onDestroy() {
         super.onDestroy()
